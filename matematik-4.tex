@@ -1,0 +1,163 @@
+% $Id$
+%
+% Copyright 2013; Daniel Bosk <daniel@bosk.se>
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 
+% Unported license.  To view a copy of this license, visit URL
+%
+%   http://creativecommons.org/licenses/by-sa/3.0/.
+%
+\documentclass[a4paper,titlepage,reqno,final,twoside]{amsbook}
+\usepackage{fixltx2e}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german,english,ibycus,swedish]{babel}
+\usepackage{graphicx}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\usepackage{lettrine}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{csquotes}
+\usepackage[natbib,style=alphabetic,maxbibnames=99]{biblatex}
+\usepackage{setspace}
+\usepackage{nomencl}
+\usepackage{marginnote}
+\usepackage{subfig}
+\usepackage{booktabs}
+\usepackage[multiple]{footmisc}
+\usepackage{verbatim}
+\usepackage{varioref,prettyref}
+\usepackage{ifdraft}
+\usepackage{asymptote}
+
+\ifdraft{
+  \usepackage{fancyhdr}
+  \usepackage{showlabels}
+}{
+  \usepackage[a4paper,rmargin=7cm,lmargin=2.5cm,bmargin=3.5cm]{geometry}
+}
+
+\addbibresource{matematik-4.bib}
+
+\newtheorem{theorem}{Sats}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Korollarium}[chapter]
+\newtheorem{conjecture}{Förmodan}[chapter]
+\theoremstyle{definition}
+\newtheorem{axiom}{Axiom}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}{Exempel}[chapter]
+\newtheorem{exercise}{Övning}[chapter]
+\theoremstyle{remark}
+\newtheorem{remark}{Anmärkning}[chapter]
+
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+
+\renewcommand{\reftextbefore}{(föregående sida)}
+\renewcommand{\reftextfacebefore}{(föregående sida)}
+\renewcommand{\reftextafter}{(nästa sida)}
+\renewcommand{\reftextfaceafter}{(nästa sida)}
+\renewcommand{\reftextfaraway}[1]{(sidan \pageref{#1})}
+\newrefformat{ch}{kapitel \ref{#1}}
+\newrefformat{sec}{avsnitt \ref{#1}}
+\newrefformat{app}{bilaga \ref{#1}}
+\newrefformat{tab}{tabell \vref{#1}}
+\newrefformat{tbl}{tabell \vref{#1}}
+\newrefformat{fig}{figur \vref{#1}}
+\newrefformat{ax}{axiom \ref{#1}}
+\newrefformat{def}{definition \ref{#1}}
+\newrefformat{thm}{sats \ref{#1}}
+\newrefformat{pro}{proposition \ref{#1}}
+\newrefformat{lem}{lemma \ref{#1}}
+\newrefformat{cor}{korollarium \ref{#1}}
+\newrefformat{ex}{exempel \ref{#1}}
+\newrefformat{xrc}{övning \ref{#1}}
+\newrefformat{remark}{anmärkning \ref{#1}}
+
+\renewcommand{\qedsymbol}{Q.E.D.}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\powerset}{\mathcal{P}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{\mathcal{V}}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\tnot}{icke}
+\DeclareMathOperator{\tor}{eller}
+\DeclareMathOperator{\tand}{och}
+\DeclareMathOperator{\lequiv}{\Longleftrightarrow}
+\DeclareMathOperator{\congruent}{\equiv}
+
+\let\stoch\relax
+\DeclareMathOperator{\xor}{\oplus}
+
+
+\makenomenclature
+\makeindex
+
+\begin{document}
+\ifdraft{
+  \fancypagestyle{plain}{
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyhead{}
+    \fancyfoot[co,ce]{\thepage}
+    \fancyfoot[ro,le]{dbosk-\today}
+  }
+  \fancypagestyle{ams}{
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyhead[ce]{\small\leftmark}
+    \fancyhead[co]{\small\rightmark}
+    \fancyhead[lo,re]{}
+    \fancyhead[ro,le]{\thepage}
+    \fancyfoot[ro,le]{dbosk-\today}
+  }
+  \pagestyle{ams}
+}{}
+
+\title[Matematik 4]{
+  Matematik 4:\\
+  En framställning med formell matematik\\
+  för 2011 års ämnesplan för gymnasieskolan
+}
+\author{Daniel Bosk}
+
+\frontmatter
+\include{frontmatter}
+\include{preface}
+
+\mainmatter
+\ifdraft{
+  \doublespacing
+}{}
+% main chapters
+\include{intro}
+\part{Tal, aritmetik, algebra och geometri}
+\include{komplexatal}
+\include{komplexrot}
+\include{trigonometri}
+\part{Samband och förändring}
+\include{funktioner}
+\include{derivering}
+\include{integrering}
+\include{differentialekv}
+
+% appendices
+\appendix
+\ifdraft{
+  \doublespacing
+}{}
+%\include{kursplanering}
+
+\backmatter
+\ifdraft{
+  \singlespacing
+}{}
+\include{backmatter}
+
+\clearpage
+\end{document}
